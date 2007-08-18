@@ -1,7 +1,7 @@
 Summary:	Collects backtraces when a child process crashes
 Name:		apache-mod_backtrace
 Version:	0
-Release:	%mkrel 5
+Release:	%mkrel 6
 Group:		System/Servers
 License:	Apache License
 Group:		System/Servers
@@ -94,5 +94,3 @@ fi
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/ZZ90_mod_backtrace.conf
 %attr(0755,root,root) %{_libdir}/apache-extramodules/mod_backtrace.so
 %attr(0644,apache,apache) %ghost /var/log/httpd/backtrace_log
-
-
