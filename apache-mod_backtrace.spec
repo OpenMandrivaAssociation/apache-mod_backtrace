@@ -1,7 +1,7 @@
 Summary:	Collects backtraces when a child process crashes
 Name:		apache-mod_backtrace
 Version:	0
-Release:	%mkrel 16
+Release:	16
 Group:		System/Servers
 License:	Apache License
 Group:		System/Servers
@@ -18,7 +18,6 @@ Requires:	apache-conf >= 2.2.0
 Requires:	apache-base >= 2.2.0
 Requires:	apache-modules >= 2.2.0
 BuildRequires:	apache-devel >= 2.2.0
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_backtrace is an experimental module for Apache httpd 2.x which
@@ -45,10 +44,9 @@ bzcat %{SOURCE1} > test_char.h
 
 %build
 
-%{_sbindir}/apxs `apr-1-config --includes` -c mod_backtrace.c
+%{_bindir}/apxs `apr-1-config --includes` -c mod_backtrace.c
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot} 
 
 install -d %{buildroot}%{_libdir}/apache-extramodules
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
@@ -86,11 +84,83 @@ if [ "$1" = "0" ]; then
 fi
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot} 
 
 
 %files
-%defattr(-,root,root)
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/ZZ90_mod_backtrace.conf
 %attr(0755,root,root) %{_libdir}/apache-extramodules/mod_backtrace.so
 %attr(0644,apache,apache) %ghost /var/log/httpd/backtrace_log
+
+
+%changelog
+* Sat Feb 11 2012 Oden Eriksson <oeriksson@mandriva.com> 0-16mdv2012.0
++ Revision: 772595
+- rebuild
+
+* Tue May 24 2011 Oden Eriksson <oeriksson@mandriva.com> 0-15
++ Revision: 678281
+- mass rebuild
+
+* Sun Oct 24 2010 Oden Eriksson <oeriksson@mandriva.com> 0-14mdv2011.0
++ Revision: 587939
+- rebuild
+
+* Mon Mar 08 2010 Oden Eriksson <oeriksson@mandriva.com> 0-13mdv2010.1
++ Revision: 516067
+- rebuilt for apache-2.2.15
+
+* Sat Aug 01 2009 Oden Eriksson <oeriksson@mandriva.com> 0-12mdv2010.0
++ Revision: 406551
+- rebuild
+
+* Tue Jan 06 2009 Oden Eriksson <oeriksson@mandriva.com> 0-11mdv2009.1
++ Revision: 325636
+- rebuild
+
+* Mon Jul 14 2008 Oden Eriksson <oeriksson@mandriva.com> 0-10mdv2009.0
++ Revision: 234781
+- rebuild
+
+* Thu Jun 05 2008 Oden Eriksson <oeriksson@mandriva.com> 0-9mdv2009.0
++ Revision: 215547
+- fix rebuild
+
+* Fri Mar 07 2008 Oden Eriksson <oeriksson@mandriva.com> 0-8mdv2008.1
++ Revision: 181704
+- rebuild
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sat Sep 08 2007 Oden Eriksson <oeriksson@mandriva.com> 0-7mdv2008.0
++ Revision: 82534
+- rebuild
+
+* Sat Aug 18 2007 Oden Eriksson <oeriksson@mandriva.com> 0-6mdv2008.0
++ Revision: 65629
+- rebuild
+
+
+* Sat Mar 10 2007 Oden Eriksson <oeriksson@mandriva.com> 0-5mdv2007.1
++ Revision: 140649
+- rebuild
+
+* Thu Nov 09 2006 Oden Eriksson <oeriksson@mandriva.com> 0-4mdv2007.1
++ Revision: 79353
+- Import apache-mod_backtrace
+
+* Wed Aug 23 2006 Oden Eriksson <oeriksson@mandriva.com> 0-4mdv2007.0
+- use correct apr-1-config
+
+* Mon Aug 07 2006 Oden Eriksson <oeriksson@mandriva.com> 0-3mdv2007.0
+- rebuild
+
+* Wed Dec 14 2005 Oden Eriksson <oeriksson@mandriva.com> 0-2mdk
+- rebuilt against apache-2.2.0
+
+* Sun Nov 06 2005 Oden Eriksson <oeriksson@mandriva.com> 0-1mdk
+- initial Mandriva package
+
