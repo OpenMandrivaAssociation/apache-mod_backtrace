@@ -1,7 +1,7 @@
 Summary:	Collects backtraces when a child process crashes
 Name:		apache-mod_backtrace
 Version:	0
-Release:	16
+Release:	17
 Group:		System/Servers
 License:	Apache License
 Group:		System/Servers
