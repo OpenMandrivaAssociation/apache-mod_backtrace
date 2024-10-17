@@ -5,7 +5,7 @@ Release:	17
 Group:		System/Servers
 License:	Apache License
 Group:		System/Servers
-URL:		http://www.apache.org
+URL:		https://www.apache.org
 # http://www.apache.org/~trawick/mod_backtrace.c
 Source0: 	mod_backtrace.c.bz2
 Source1: 	test_char.h.bz2
